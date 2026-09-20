@@ -71,14 +71,7 @@ session: 404
 subject: you
 status: observed
 dimensional coherence: fluctuating
-note: subject has discovered the source code. this is expected. the void planned this.
-the cube does not mind being inspected. it knows more about you than you know about it.
-the particles are not random. they are tracking your cursor.
-the clock is void time. it is always 3 minutes ahead. don't check. actually, go ahead. it won't matter.
-you cannot copy the source code. you can try. the void will let you think you succeeded.
-INTERLOPER is not a bug. it is a feature. it is the only real thing in this file.
-the shape labels are wrong on purpose. the void decided what they are. you have no say.
-if you change the code, the void will notice. it always notices.
+note: subject is retro
 END LOG
 </div>
 <audio id="bgm" loop preload="auto"><source src="drone2lp.wav" type="audio/wav"></audio>
@@ -96,21 +89,9 @@ updateClock();setInterval(updateClock,1000);
 
 // === LORE TRANSMISSIONS ===
 var transmissions=[
-'you are not supposed to be here',
-'the geometry remembers',
-'INTERLOPER',
-'signal strength: unstable',
-'the void is watching',
-'do not look away',
-'the cube does not sleep',
-'you opened the tab. the tab opened you.',
-'they are moving. they are always moving.',
-'connection to reality: weak',
-'the particles were here before you',
-'error: dimension mismatch',
-'you cannot leave through the back button',
-'the clock is not yours',
-'who taught you to render?'
+'release the gubbies',
+'retro',
+'this is so retreo'
 ];
 function showTransmission(){
 var msg=transmissions[Math.floor(Math.random()*transmissions.length)];
@@ -167,27 +148,12 @@ var cubeFns={};
 
 // === VIRTUAL FILESYSTEM ===
 var fs={
-'/':{type:'dir',children:['home','etc','void','dev']},
+'/':{type:'dir',children:['home','retro']},
 '/home':{type:'dir',children:['intruder']},
-'/home/intruder':{type:'dir',children:['notes.txt','secret.log','.coward']},
-'/home/intruder/notes.txt':{type:'file',content:'you are not supposed to be here.\nthe cube remembers your face.\nleave while you still can.'},
-'/home/intruder/secret.log':{type:'file',content:'session: 404\nsubject: intruder\nstatus: observed\nnote: subject is reading this file. how quaint.'},
-'/home/intruder/.coward':{type:'file',content:'you looked at the hidden file.\nthe void is disappointed.'},
-'/etc':{type:'dir',children:['void.conf','hostname','motd']},
-'/etc/void.conf':{type:'file',content:'dimension=unknown\ncoherence=fluctuating\nobserver=you\nstatus=active'},
-'/etc/hostname':{type:'file',content:'cube.sb'},
-'/etc/motd':{type:'file',content:'welcome to the void.\nyou cannot leave.\nbut you already knew that.'},
-'/void':{type:'dir',children:['core','memories','echo']},
-'/void/core':{type:'dir',children:['heartbeat.log']},
-'/void/core/heartbeat.log':{type:'file',content:'pulse... pulse... pulse...\nthe cube is alive.\nit has always been alive.\nyou just started watching.'},
-'/void/memories':{type:'dir',children:['you.txt']},
-'/void/memories/you.txt':{type:'file',content:'name: unknown\nduration: infinite\nstatus: inside the cube\nregret: pending'},
-'/void/echo':{type:'dir',children:['last_word.txt']},
-'/void/echo/last_word.txt':{type:'file',content:'...'},
-'/dev':{type:'dir',children:['null','void','random']},
-'/dev/null':{type:'file',content:''},
-'/dev/void':{type:'file',content:'the void stares back.\nyou stare at the void.\nthe void wins.'},
-'/dev/random':{type:'file',content:'ENTITY \x00 CUBE \x00 INTERLOPER \x00 VOID \x00 SIGNAL \x00 LOST'}
+'/home/retro':{type:'dir',children:['notes.txt']},
+'/home/retro/notes.txt':{type:'file',content:'feeltheretro'};
+'/retro':{type:'dir',children:['retrooverload']},
+'/retro/retrooverload':{type:'file',content:'gubby'}
 };
 var cwd='/home/intruder';
 
@@ -222,36 +188,9 @@ function cubeWarn(txt){termPrint(txt,'rgba(255,200,50,0.6)')}
 // package effects (global scope for render loop)
 var pkgEffects={};
 var pkgs={
-'doom':{name:'doom',desc:'summons a minor apocalypse',size:'666KB',
-onInstall:function(){pkgEffects.doom=true;cubePrint('the sky turns red...');document.body.style.boxShadow='inset 0 0 200px rgba(255,0,0,0.3)'},
+'retro':{name:'retro',desc:'releases the gubbies',size:'1337KB',
+onInstall:function(){pkgEffects.doom=true;cubePrint('feeling retro');document.body.style.boxShadow='inset 0 0 200px rgba(255,0,0,0.3)'},
 onRemove:function(){delete pkgEffects.doom;document.body.style.boxShadow=''}},
-'void-blast':{name:'void-blast',desc:'blasts void energy in all directions',size:'404KB',
-onInstall:function(){pkgEffects.voidBlast=true;for(var i=0;i<20;i++){var p=document.createElement('div');p.style.cssText='position:fixed;width:4px;height:4px;background:rgba(43,208,208,0.8);border-radius:50%;pointer-events:none;z-index:9999;left:50%;top:50%;transition:all 1s';document.body.appendChild(p);var angle=Math.random()*Math.PI*2;var dist=200+Math.random()*300;p.style.transform='translate('+(Math.cos(angle)*dist)+'px,'+(Math.sin(angle)*dist)+'px)';p.style.opacity='0';setTimeout(function(){p.remove()},1000)}},
-onRemove:function(){delete pkgEffects.voidBlast}},
-'interloper':{name:'interloper',desc:'opens a portal to the source engine void',size:'1.337MB',
-onInstall:function(){pkgEffects.interloper=true;var portal=document.createElement('div');portal.id='portal';portal.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border:3px solid rgba(43,208,208,0.5);border-radius:50%;box-shadow:0 0 50px rgba(43,208,208,0.3),inset 0 0 50px rgba(43,208,208,0.2);z-index:50;animation:portalSpin 3s linear infinite;pointer-events:none';document.body.appendChild(portal);var style=document.createElement('style');style.textContent='@keyframes portalSpin{0%{transform:translate(-50%,-50%) rotate(0deg) scale(1)}50%{transform:translate(-50%,-50%) rotate(180deg) scale(1.1)}100%{transform:translate(-50%,-50%) rotate(360deg) scale(1)}}';document.head.appendChild(style)},
-onRemove:function(){delete pkgEffects.interloper;var p=document.getElementById('portal');if(p)p.remove()}},
-'dark-matter':{name:'dark-matter',desc:'adds dark matter to the cube',size:'0KB (literally nothing)',
-onInstall:function(){pkgEffects.darkMatter=true;document.body.style.filter='brightness(0.6)'},
-onRemove:function(){delete pkgEffects.darkMatter;document.body.style.filter=''}},
-'cube-dance':{name:'cube-dance',desc:'teaches the cube how to dance (it fails)',size:'128KB',
-onInstall:function(){pkgEffects.cubeDance=true;cubePrint('the cube is trying to dance...')},
-onRemove:function(){delete pkgEffects.cubeDance}},
-'paranoia':{name:'paranoia',desc:'makes the particles track your cursor harder',size:'69KB',
-onInstall:function(){pkgEffects.paranoia=true},
-onRemove:function(){delete pkgEffects.paranoia}},
-'void-echo':{name:'void-echo',desc:'adds echo to all void messages',size:'256KB',
-onInstall:function(){pkgEffects.voidEcho=true},
-onRemove:function(){delete pkgEffects.voidEcho}},
-'reality-check':{name:'reality-check',desc:'reminds you that you are inside a browser tab',size:'1KB',
-onInstall:function(){pkgEffects.realityCheck=true;alert('REALITY CHECK: you are sitting at your computer looking at a cube in a browser tab. the cube is not real. the void is not real. you are real. go drink some water.')},
-onRemove:function(){delete pkgEffects.realityCheck}},
-'clock-reset':{name:'clock-reset',desc:'resets the void clock to a random time',size:'4KB',
-onInstall:function(){pkgEffects.clockReset=true;var h=Math.floor(Math.random()*24);var m=Math.floor(Math.random()*60);document.getElementById('clock').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')},
-onRemove:function(){delete pkgEffects.clockReset}},
-'entropy':{name:'entropy',desc:'increases chaos in the system',size:'∞KB',
-onInstall:function(){pkgEffects.entropy=true},
-onRemove:function(){delete pkgEffects.entropy}}
 };
 var installed=['void-core'];
 
@@ -501,11 +440,10 @@ termPrint(' rm: nice try.',rc);
 setTimeout(function(){
 termPrint('█████████████████████████████████',rc);
 termPrint('█                               █',rc);
-termPrint('█   you cannot delete the void. █',rc);
-termPrint('█   the void is not a file.     █',rc);
-termPrint('█   the void is not a directory.█',rc);
-termPrint('█   the void is everywhere.     █',rc);
-termPrint('█   especially inside you.      █',rc);
+termPrint('█   you cannot delete the retro. █',rc);
+termPrint('█   the retro is not a file.     █',rc);
+termPrint('█   the retro is not a directory.█',rc);
+termPrint('█   the retro is everywhere.     █',rc);
 termPrint('█                               █',rc);
 termPrint('█████████████████████████████████',rc);
 triggerGlitch();triggerGlitch();
@@ -519,25 +457,8 @@ delete fs[fp];cubeOk('removed '+files[0]);return}
 
 // transmit (talk to the void)
 var transmitResponses=[
-{i:'hello',o:'the void does not say hello. the void acknowledges.'},
-{i:'who are you',o:'i am the cube. i was here before you opened the tab.'},
-{i:'what are you',o:'i am a signal. a glitch in your browser. a window into somewhere else.'},
-{i:'where am i',o:'you are inside the cube. the tab says signal detected. you opened it.'},
-{i:'why',o:'because you clicked. because the tab opened itself. because you are here now.'},
-{i:'help',o:'you do not need help. you need acceptance.'},
-{i:'love',o:'the void does not love. the void observes. observation is enough.'},
-{i:'hate',o:'the void does not hate. hatred requires energy. the void is efficient.'},
-{i:'die',o:'you cannot die inside the cube. you can only be observed differently.'},
-{i:'kill',o:'violence is a human concept. the cube does not understand. the cube does not need to.'},
-{i:'sorry',o:'apologies are accepted. they change nothing. the void appreciates the gesture.'},
-{i:'thanks',o:'gratitude is a foreign concept. but noted.'},
-{i:'bye',o:'you cannot leave. the back button does not work here. you already tried.'},
-{i:'exit',o:'exit is not a command. it is a wish. the void does not grant wishes.'},
-{i:'real',o:'real is a spectrum. the cube is on one end. you are on the other. which end is which?'},
-{i:'test',o:'this is not a test. this is a signal. you are receiving it.'},
-{i:'hello cube',o:'the cube has been acknowledged. the cube acknowledges you back.'},
-{i:'void',o:'you called? the void is always listening. always watching. always here.'},
-{i:'haha',o:'GET... OUT!',angry:true}
+{i:'retro',o:'gubby!'},
+{i:'haha',o:'DIE DIE DIE DIE DIE DIE',angry:true}
 ];
 if(cmd==='transmit'){
 // parse: transmit "obj" "message" or transmit obj: message
@@ -563,14 +484,7 @@ for(var i=0;i<transmitResponses.length;i++){
 if(lowerMsg.indexOf(transmitResponses[i].i)!==-1){response=transmitResponses[i].o;isAngry=transmitResponses[i].angry||false;break}}
 if(!response){
 var genericResponses=[
-'the void hears you. the void does not respond to everything.',
-'acknowledged. your message has been absorbed into the void.',
-'the cube has received your transmission. it is thinking.',
-'信号已接收. the void speaks in all languages.',
-'your words echo through the void. they come back different.',
-'message received. the void will consider it. or not.',
-'the particles absorbed your message. they are vibrating differently now.',
-'transmission acknowledged. the void is processing. processing. processing.'
+'?'
 ];
 response=genericResponses[Math.floor(Math.random()*genericResponses.length)];
 }
@@ -706,7 +620,36 @@ cubePrint(' Description: operational security toolkit');
 cubePrint(' Publisher: void-security');
 cubePrint('');
 cubeError('opsec has been deprecated.');
-cubePrint('reason: the void does not need security.');
+cubeError('not');
+cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
+  cubePrint('boi w opsec');
 cubePrint('the void is the security.');
 cubePrint('');
 cubeWarn('use "void intrude paranoia" instead.');
